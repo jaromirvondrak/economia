@@ -8,6 +8,10 @@ export class RatesService {
 
   // Stáhne nové kurzy, zvaliduje je a uloží do cache.
   // Pokud vše proběhne, vrací nový snapshot.
+  /**
+   * Provede jeden refresh kurzů (fetch + parse + uložení do cache).
+   * Vyhazuje chybu, pokud se data nepodaří stáhnout nebo zvalidovat.
+   */
   async refresh(): Promise<RatesSnapshot> {
     const external = await fetchRates();
     const parsed = parseRates(external);
@@ -29,6 +33,10 @@ export class RatesService {
 
   // Vrátí všechny kurzy ve formátu požadovaném API.
   // Pokud ještě nejsou data, vrací null.
+  /**
+   * Vrací kurzy jako pole objektů { "USD": 23.45 }.
+   * Když cache ještě není naplněná, vrací null.
+   */
   getAll(): Array<Record<string, number>> | null {
     const latest = this.cache.getLatest();
     if (!latest) return null;
@@ -39,6 +47,9 @@ export class RatesService {
   }
 
   // Vrátí poslední snapshot pro interní použití.
+  /**
+   * Vrací poslední uložený snapshot nebo null, pokud nic není v cache.
+   */
   getSnapshot(): RatesSnapshot | null {
     return this.cache.getLatest();
   }

@@ -16,7 +16,8 @@ const startScheduler = () => {
       await ratesService.refresh();
     } catch (error) {
       logger.warn("Rates refresh failed", {
-        error: error instanceof Error ? error.message : String(error)
+        error: error instanceof Error ? error.message : String(error),
+        sourceUrl: config.sourceUrl
       });
     }
   };

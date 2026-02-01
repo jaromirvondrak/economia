@@ -27,6 +27,8 @@ npm run dev
 ### Zabezpečené endpointy (API key)
 Header: `X-API-Key: <API_KEY>`
 
+Poznámka: Pro jednoduché B2B/interní použití stačí API key. Healthcheck je veřejný.
+
 #### Všechny kurzy
 - `GET /rates`
 - Response (JSON):
@@ -63,4 +65,25 @@ Header: `X-API-Key: <API_KEY>`
 ## Testy
 ```bash
 npm test
+```
+
+## Příklady curl
+Healthcheck (public):
+```bash
+curl http://localhost:3000/healthcheck
+```
+
+Všechny kurzy (API key):
+```bash
+curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/rates
+```
+
+Konkrétní měna:
+```bash
+curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/rates/USD
+```
+
+Admin status:
+```bash
+curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/admin/status
 ```
