@@ -3,9 +3,11 @@ import { RatesCache } from "../src/cache/ratesCache";
 
 describe("RatesCache", () => {
   it("stores and returns latest snapshot", () => {
+    // Na začátku cache nic neobsahuje.
     const cache = new RatesCache();
     expect(cache.getLatest()).toBeNull();
 
+    // Uložíme snapshot a očekáváme, že se vrátí zpět.
     cache.setLatest({
       base: "EUR",
       fetchedAt: "2026-01-01T00:00:00.000Z",
