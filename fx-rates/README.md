@@ -38,8 +38,8 @@ Poznámka: Pro jednoduché B2B/interní použití stačí API key. Healthcheck j
 - Response (JSON):
 ```json
 [
-  { "USD": 23.45 },
-  { "EUR": 24.12 }
+  { "GBP": 29.87 },
+  { "JPY": 0.15 }
 ]
 ```
 
@@ -47,7 +47,7 @@ Poznámka: Pro jednoduché B2B/interní použití stačí API key. Healthcheck j
 - `GET /rates/:code`
 - Response (JSON):
 ```json
-{ "USD": 23.45 }
+{ "GBP": 29.87 }
 ```
 - Pokud měna neexistuje: `404` + JSON `{ "error": "..." }`
 
@@ -90,7 +90,7 @@ curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/rates
 
 Konkrétní měna:
 ```bash
-curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/rates/USD
+curl -H "X-API-Key: zkusebni_api_klic" http://localhost:3000/rates/GBP
 ```
 
 Admin status:
