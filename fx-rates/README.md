@@ -19,6 +19,10 @@ npm run dev
 - `SOURCE_URL` – URL zdroje kurzů (základní měna je CZK)
 - `REQUEST_TIMEOUT_MS` – timeout requestu
 
+## Zdroj kurzů a perioda stahování
+- Zdroj kurzů nastavíte v `SOURCE_URL`.
+- Periodu stahování nastavíte v `FETCH_INTERVAL_MS` (v milisekundách).
+
 ## HTTP API
 ### Healthcheck (public)
 - `GET /healthcheck`
@@ -61,6 +65,12 @@ Poznámka: Pro jednoduché B2B/interní použití stačí API key. Healthcheck j
 ## Poznámky
 - Cache vždy drží poslední úspěšně stažená data.
 - Při chybě stahování aplikace běží dál a loguje chybu.
+
+## Stručná architektura
+- `src/index.ts` spouští scheduler a HTTP server.
+- `RatesService.refresh()` → fetch → parse → cache.
+- In‑memory cache drží **poslední úspěšná** data.
+- HTTP vrstva je oddělená v `src/http` a používá API key middleware.
 
 ## Testy
 ```bash
