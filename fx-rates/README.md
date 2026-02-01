@@ -32,6 +32,7 @@ npm run dev
 Header: `X-API-Key: <API_KEY>`
 
 Poznámka: Pro jednoduché B2B/interní použití stačí API key. Healthcheck je veřejný.
+Rate limit pro zabezpečené routy je nastaven na 60 requestů/min/IP (konfigurace v `src/http/middleware/rateLimit.ts`).
 
 #### Všechny kurzy
 - `GET /rates`
