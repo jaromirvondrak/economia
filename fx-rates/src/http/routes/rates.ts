@@ -40,7 +40,6 @@ export const createRatesRouter = (ratesService: RatesService) => {
   });
 
   // Jednoduchý admin endpoint pro zjištění posledního úspěšného fetchu.
-  // Dá se použít např. pro interní monitoring.
   router.get("/admin/status", (_req, res) => {
     const snapshot = ratesService.getSnapshot();
     if (!snapshot) {

@@ -1,5 +1,4 @@
 // Typ popisuje, jaké položky konfigurace očekáváme.
-// TypeScript hlídá, že při práci s konfigurací neuděláme překlep nebo nevynecháme povinné hodnoty.
 export type AppConfig = {
   port: number;
   apiKey: string;
@@ -16,7 +15,6 @@ const toNumber = (value: string | undefined, fallback: number): number => {
 };
 
 // Centrální konfigurace načtená z proměnných prostředí.
-// Díky tomu lze nastavení měnit bez úpravy kódu.
 export const config: AppConfig = {
   port: toNumber(process.env.PORT, 3000),
   apiKey: process.env.API_KEY || "dev-key",

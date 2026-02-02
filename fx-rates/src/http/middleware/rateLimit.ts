@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 
 // Jednoduchý in-memory rate limit pro zabezpečené routy.
 // Omezí počet requestů z jedné IP za časové okno.
-// Poznámka: Pro produkci ve více instancích by bylo lepší centrální úložiště (např. Redis).
 
 type RateLimitEntry = {
   count: number;
